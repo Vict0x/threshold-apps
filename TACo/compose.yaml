@@ -1,0 +1,13 @@
+services:
+  ursula:
+    image: nucypher/nucypher:latest
+    container_name: ursula
+    restart: unless-stopped
+    volumes:
+      - /home/taco/.local/share/nucypher:/root/.local/share/nucypher:rw
+      - /home/taco/.ethereum/:/root/.ethereum:ro
+    ports:
+      - "9151:9151"
+    env_file:
+      - /home/taco/bin/nucypher.env
+    command: "nucypher ursula run"
