@@ -1,0 +1,19 @@
+services:
+  keep-client:
+    image: keepnetwork/keep-client:v2.1.0
+    container_name: keep-client
+    restart: on-failure
+    ports:
+      - "3919:3919"
+      - "9601:9601"
+    volumes:
+      - /home/tbtc/config/:/mnt/keep/config
+      - /home/tbtc/storage/:/mnt/keep/storage
+    environment:
+      - KEEP_ETHEREUM_PASSWORD=<ethereum keystore file password>
+      - LOG_LEVEL=info
+    logging:
+      options:
+        max-size: "100m"
+        max-file: "3"
+    command: start --ethereum.url "ethereum-RPC" --bitcoin.electrum.url "tcp://AAA.BBB.CCC.DDD:50001" --ethereum.keyFile "/path/to/ethereum-keystore-file-name" --storage.dir "/path/to/storage" --network.announcedAddresses "/ip4/111.222.333.444/tcp/3919"
