@@ -5,6 +5,7 @@ services:
     restart: unless-stopped
     volumes:
       - /home/taco/.local/share/nucypher:/root/.local/share/nucypher:rw
+      - /home/taco/.cache/nucypher:/root/.cache/nucypher:rw
       - /home/taco/.ethereum/:/root/.ethereum:ro
     ports:
       - "9151:9151"
