@@ -10,5 +10,5 @@ services:
     ports:
       - "9151:9151"
     env_file:
-      - /home/taco/bin/nucypher.env
+      - /home/taco/.local/share/nucypher/nucypher.env
     command: "nucypher ursula run"
